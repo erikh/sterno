@@ -61,7 +61,8 @@ func buildMetrics(c Config) (*prometheus.Registry, error) {
 
 						res, err := binary.Uvarint(buf)
 						if err < 0 {
-							log.Printf("Error while unpacking uvarint: %v", err)
+							log.Printf("Error generating random number")
+							continue
 						}
 
 						gauge.Set(float64((res % (metric.RandomMax - metric.RandomMin)) + metric.RandomMin))
