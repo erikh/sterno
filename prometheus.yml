@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 1s
+  evaluation_interval: 1s
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: "sterno"
+    static_configs:
+      - targets: 
+        - "sterno-1:9090"
+        - "sterno-2:9090"
+        - "sterno-3:9090"
+        - "sterno-4:9090"
+        - "sterno-5:9090"
+        - "sterno-6:9090"
+        - "sterno-7:9090"
+        - "sterno-8:9090"

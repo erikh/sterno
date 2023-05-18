@@ -1,0 +1,68 @@
+version: "3.5"
+services:
+  prometheus:
+    image: prom/prometheus
+    networks:
+      - sterno
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml:ro"
+  sterno-1:
+    container_name: sterno-1
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+  sterno-2:
+    container_name: sterno-2
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+  sterno-3:
+    container_name: sterno-3
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+  sterno-4:
+    container_name: sterno-4
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+  sterno-5:
+    container_name: sterno-5
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+  sterno-6:
+    container_name: sterno-6
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+  sterno-7:
+    container_name: sterno-7
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+  sterno-8:
+    container_name: sterno-8
+    image: sterno
+    build:
+      context: .
+    networks:
+      - sterno
+networks:
+  sterno:
