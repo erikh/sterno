@@ -28,6 +28,7 @@ type Metric struct {
 	Type        string  `yaml:"type"`
 	Random      bool    `yaml:"random"`
 	StaticValue float64 `yaml:"static_value"`
+	RandomMin   uint64  `yaml:"random_min"`
 	RandomMax   uint64  `yaml:"random_max"`
 }
 
@@ -63,7 +64,7 @@ func buildMetrics(c Config) (*prometheus.Registry, error) {
 							log.Printf("Error while unpacking uvarint: %v", err)
 						}
 
-						gauge.Set(float64(res%metric.RandomMax + 1))
+						gauge.Set(float64((res % (metric.RandomMax - metric.RandomMin)) + metric.RandomMin))
 					} else {
 						gauge.Set(metric.StaticValue)
 					}
